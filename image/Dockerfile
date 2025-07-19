@@ -17,8 +17,15 @@ RUN \
     && ./configure \
     && make \
     && make install \
-    # configure asterisk
+    # basic asterisk configuration
     && cp -R configs/basic-pbx/* /etc/asterisk/ \
+    && cp configs/samples/acl.conf.sample /etc/asterisk/acl.conf \
+    && cp configs/samples/ccss.conf.sample /etc/asterisk/ccss.conf \
+    && cp configs/samples/cel.conf.sample /etc/asterisk/cel.conf \
+    && cp configs/samples/features.conf.sample /etc/asterisk/features.conf \
+    && cp configs/samples/pjproject.conf.sample /etc/asterisk/pjproject.conf \
+    && cp configs/samples/pjsip.conf.sample /etc/asterisk/pjsip.conf \
+    && cp configs/samples/udptl.conf.sample /etc/asterisk/udptl.conf \
     # cleanup
     && cd / \
     && rm -rf /asterisk* \
