@@ -23,10 +23,13 @@ RUN \
     && cp configs/samples/ccss.conf.sample /etc/asterisk/ccss.conf \
     && cp configs/samples/cel.conf.sample /etc/asterisk/cel.conf \
     && cp configs/samples/features.conf.sample /etc/asterisk/features.conf \
+    && cp configs/samples/indications.conf.sample /etc/asterisk/indications.conf \
     && cp configs/samples/pjproject.conf.sample /etc/asterisk/pjproject.conf \
     && cp configs/samples/pjsip.conf.sample /etc/asterisk/pjsip.conf \
     && cp configs/samples/stasis.conf.sample /etc/asterisk/stasis.conf \
     && cp configs/samples/udptl.conf.sample /etc/asterisk/udptl.conf \
+    # put environment variables in place
+    && sed -i 's/country=us/country=$COUNTRY/g' /etc/asterisk/indications.conf \
     # cleanup
     && cd / \
     && rm -rf /asterisk* \
