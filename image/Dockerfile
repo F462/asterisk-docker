@@ -26,6 +26,7 @@ RUN \
     && cp configs/samples/indications.conf.sample /etc/asterisk/indications.conf \
     && cp configs/samples/pjproject.conf.sample /etc/asterisk/pjproject.conf \
     && cp configs/samples/pjsip.conf.sample /etc/asterisk/pjsip.conf \
+    && cp configs/samples/queuerules.conf.sample /etc/asterisk/queuerules.conf \
     && cp configs/samples/stasis.conf.sample /etc/asterisk/stasis.conf \
     && cp configs/samples/udptl.conf.sample /etc/asterisk/udptl.conf \
     # put environment variables in place
