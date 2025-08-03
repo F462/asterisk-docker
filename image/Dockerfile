@@ -25,6 +25,7 @@ RUN \
     && cp configs/samples/features.conf.sample /etc/asterisk/features.conf \
     && cp configs/samples/pjproject.conf.sample /etc/asterisk/pjproject.conf \
     && cp configs/samples/pjsip.conf.sample /etc/asterisk/pjsip.conf \
+    && cp configs/samples/stasis.conf.sample /etc/asterisk/stasis.conf \
     && cp configs/samples/udptl.conf.sample /etc/asterisk/udptl.conf \
     # cleanup
     && cd / \
