@@ -24,6 +24,7 @@ RUN \
     && cp configs/samples/cel.conf.sample /etc/asterisk/cel.conf \
     && cp configs/samples/features.conf.sample /etc/asterisk/features.conf \
     && cp configs/samples/indications.conf.sample /etc/asterisk/indications.conf \
+    && cp configs/samples/manager.conf.sample /etc/asterisk/manager.conf \
     && cp configs/samples/pjproject.conf.sample /etc/asterisk/pjproject.conf \
     && cp configs/samples/pjsip.conf.sample /etc/asterisk/pjsip.conf \
     && cp configs/samples/queuerules.conf.sample /etc/asterisk/queuerules.conf \
