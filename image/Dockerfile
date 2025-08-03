@@ -30,7 +30,7 @@ RUN \
     && cp configs/samples/stasis.conf.sample /etc/asterisk/stasis.conf \
     && cp configs/samples/udptl.conf.sample /etc/asterisk/udptl.conf \
     # put environment variables in place
-    && sed -i 's/country=us/country=$COUNTRY/g' /etc/asterisk/indications.conf \
+    && sed -i 's/country=us/country=de/g' /etc/asterisk/indications.conf \
     # cleanup
     && cd / \
     && rm -rf /asterisk* \
