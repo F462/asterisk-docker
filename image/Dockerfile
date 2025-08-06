@@ -32,6 +32,8 @@ RUN \
     && cp configs/samples/udptl.conf.sample /etc/asterisk/udptl.conf \
     # put environment variables in place
     && sed -i 's/country=us/country=de/g' /etc/asterisk/indications.conf \
+    # install extensions
+    && apt-get install -y iptables fail2ban \
     # cleanup
     && cd / \
     && rm -rf /asterisk* \
@@ -39,5 +41,14 @@ RUN \
     && apt-get remove -y ${BUILD_DEPENDENCIES} \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
+
+COPY conf/asterisk/logger.conf /etc/asterisk/logger.conf
+COPY conf/fail2ban/asterisk.conf /etc/fail2ban/filter.d/asterisk.conf
+ARG TMP_JAIL_FILE="/tmp/jail_append.conf"
+COPY conf/fail2ban/jail.conf ${TMP_JAIL_FILE}
+
+RUN cat ${TMP_JAIL_FILE} >> /etc/fail2ban/jail.conf \
+    && sed -i 's,#ignoreip = .*,ignoreip = 127.0.0.1/8 ::1 192.168.2.0/24,g' /etc/fail2ban/jail.conf \
+    && rm ${TMP_JAIL_FILE}
 
 CMD [ "asterisk", "-vvvc" ]
